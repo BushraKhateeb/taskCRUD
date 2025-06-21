@@ -110,8 +110,8 @@ h2 {
   cursor: not-allowed; 
 }
 .deleteDone:hover {
-    background-color: #ec5c57;
+  background-color: #ec5c57;
 }
 .deleteAll:hover {
-    background-color: #ec5c57;
+  background-color: #ec5c57;
 }
