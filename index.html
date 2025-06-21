@@ -3,11 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo </title>
     <link href="./assets/main.css" rel="stylesheet">
 </head>
 <body>
-    
+    <div class="container"> 
+        <h2>TodoInput</h2>
+        <div class="inputContainer">
+            <input type="text" id="todoInput" placeholder="New Todo"/> 
+            <button id="addBtn">Add new task</button>
+        </div>
+         <h2>Todo List</h2>
+    <div class="filterBtn">
+      <button >All</button>
+      <button>Done</button>
+      <button >Todo</button>
+    </div>
+    <div class="noTasks">No tasks.</div>
+
+    <div class="deleteBtn">
+      <button class="deleteDone" disabled>Delete Done Tasks</button>
+      <button class="deleteAll" disabled>Delete All Tasks</button>
+    </div>
+
+    </div>
 
 
     <script src="./assets/main.js"></script>
