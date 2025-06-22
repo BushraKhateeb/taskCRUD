@@ -130,7 +130,12 @@ h2 {
   width: 100%;  
   padding: 10px;
   
-}  
+}   
+.taskBtn{
+ display: flex;
+  margin-right: auto; 
+  gap: 10px;
+}
 
 
 
