@@ -7,8 +7,10 @@ const noTasks = document.getElementById('noTasks');
 
 const toggleEmptyState=()=>{ 
   noTasks.style.display = taskList.children.
-  length === 0 ? 'block' : 'none';
-} //عشان احذف كلمة no tasks when add new task
+  length === 0 ? 'block' : 'none';  
+  //عشان احذف كلمة no tasks when add new task 
+ 
+} 
 
 
 const addTask = (event) => { 
@@ -28,7 +30,10 @@ const addTask = (event) => {
       </div> 
       `;
 
-     
+      li.querySelector('.deleteBtn').addEventListener('click', ()=>{
+        li.remove();
+      });
+
      taskList.appendChild(li); 
      todoInput.value = ''; 
      toggleEmptyState();
