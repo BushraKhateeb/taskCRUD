@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     taskToDelete = null;
   });
 
-  // Edit task logic
+  
   saveEditBtn.addEventListener('click', () => {
     if (taskToEdit) {
       taskToEdit.textContent = editInput.value.trim();
