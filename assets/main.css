@@ -135,7 +135,13 @@ h2 {
  display: flex;
   margin-right: auto; 
   gap: 10px;
+} 
+
+.taskBtn button{
+
+  border: none;
 }
+
 
 
 
