@@ -5,10 +5,10 @@ const taskList = document.getElementById('taskList');
 const noTasks = document.getElementById('noTasks');
 
 
-const toggleEmptyState=()=>{
+const toggleEmptyState=()=>{ 
   noTasks.style.display = taskList.children.
   length === 0 ? 'block' : 'none';
-}
+} //عشان احذف كلمة no tasks when add new task
 
 
 const addTask = (event) => { 
