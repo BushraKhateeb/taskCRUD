@@ -20,9 +20,9 @@ const addTask = (event) => {
     } 
      const li= document.createElement('li'); 
       li.innerHTML = `
-      <span>${taskText} </span> 
-      <input type= "checkbox" class="checkbox"> 
-      <div class="taskBtn"> 
+      <span>${taskText} </span>  
+      <div class="taskBtn">
+      <input type= "checkbox" class="checkbox">  
       <button class="editBtn"><i class="fa-solid fa-pen"></i></button> 
       <button class="deleteBtn"><i class="fa-solid fa-trash"></i></button>  
       </div> 

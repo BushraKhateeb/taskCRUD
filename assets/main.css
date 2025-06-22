@@ -134,9 +134,9 @@ h2 {
 }    
 
 .taskBtn{
- display: flex;
-  margin-right: auto; 
+  display: flex;
   gap: 10px;
+  align-items: center;
 } 
 
 .taskBtn button{
@@ -144,11 +144,11 @@ background: #ffffff;
   border: none; 
   width: 30px; 
   height: 30px; 
-  color: #fff; 
   cursor: pointer; 
   display: flex; 
   justify-content: center; 
-  align-items: center;
+  align-items: center; 
+
 }  
 .editBtn{
   color: yellow;
