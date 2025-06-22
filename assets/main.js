@@ -3,15 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const addBtn = document.getElementById('addBtn');
   const taskList = document.getElementById('taskList');
   const noTasks = document.getElementById('noTasks');
-
   const modal = document.getElementById('confirmModal');
   const confirmDeleteBtn = document.getElementById('confirmDelete');
   const cancelDeleteBtn = document.getElementById('cancelDelete');
-
   const editModal = document.getElementById('editModal');
   const editInput = document.getElementById('editInput');
   const saveEditBtn = document.getElementById('saveEdit');
   const cancelEditBtn = document.getElementById('cancelEdit');
+  const deleteDoneBtn = document.querySelector('.deleteDone');
+  const deleteAllBtn = document.querySelector('.deleteAll');
 
   let taskToDelete = null;
   let taskToEdit = null;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const addTask = (text = '', completed = false) => {
     const taskText = text || todoInput.value.trim();
-    if (!taskText) return;
+    if (!taskText || Array.from(taskList.children).some(li => li.querySelector('span').textContent === taskText)) return;
 
     const li = document.createElement('li');
     li.innerHTML = `
@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
       editBtn.disabled = isChecked;
       editBtn.style.opacity = isChecked ? '0.5' : '1';
       editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
+
+      deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
     });
 
     deleteBtn.addEventListener('click', () => {
@@ -70,6 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     taskList.appendChild(li);
     todoInput.value = '';
     toggleEmptyState();
+
+    deleteAllBtn.disabled = false;
+    deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
   };
 
   addBtn.addEventListener('click', () => addTask());
@@ -84,13 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     modal.classList.add('hidden');
     taskToDelete = null;
+
+    deleteAllBtn.disabled = taskList.children.length === 0;
+    deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
   });
 
   cancelDeleteBtn.addEventListener('click', () => {
     modal.classList.add('hidden');
     taskToDelete = null;
   });
-
 
   saveEditBtn.addEventListener('click', () => {
     if (taskToEdit) {
