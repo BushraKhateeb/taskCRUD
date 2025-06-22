@@ -8,24 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const confirmDeleteBtn = document.getElementById('confirmDelete');
   const cancelDeleteBtn = document.getElementById('cancelDelete');
 
+  const editModal = document.getElementById('editModal');
+  const editInput = document.getElementById('editInput');
+  const saveEditBtn = document.getElementById('saveEdit');
+  const cancelEditBtn = document.getElementById('cancelEdit');
+
   let taskToDelete = null;
+  let taskToEdit = null;
 
   const toggleEmptyState = () => {
     noTasks.style.display = taskList.children.length === 0 ? 'block' : 'none';
   };
 
-  const addTask = (text, completed = false) => {
+  const addTask = (text = '', completed = false) => {
     const taskText = text || todoInput.value.trim();
     if (!taskText) return;
-
-    const editLi = taskList.querySelector('.editing');
-    if (editLi) {
-      // Update the task text if in editing mode
-      editLi.querySelector('span').textContent = taskText;
-      editLi.classList.remove('editing');
-      todoInput.value = '';
-      return;
-    }
 
     const li = document.createElement('li');
     li.innerHTML = `
@@ -39,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const checkbox = li.querySelector('.checkbox');
     const editBtn = li.querySelector('.editBtn');
+    const deleteBtn = li.querySelector('.deleteBtn');
+    const taskSpan = li.querySelector('span');
 
     if (completed) {
       li.classList.add('completed');
@@ -55,16 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
       editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
     });
 
-    editBtn.addEventListener('click', () => {
-      if (!checkbox.checked) {
-        todoInput.value = li.querySelector('span').textContent;
-        li.classList.add('editing');
-      }
-    });
-
-    li.querySelector('.deleteBtn').addEventListener('click', () => {
+    deleteBtn.addEventListener('click', () => {
       taskToDelete = li;
       modal.classList.remove('hidden');
+    });
+
+    editBtn.addEventListener('click', () => {
+      if (!checkbox.checked) {
+        taskToEdit = taskSpan;
+        editInput.value = taskSpan.textContent;
+        editModal.classList.remove('hidden');
+      }
     });
 
     taskList.appendChild(li);
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   addBtn.addEventListener('click', () => addTask());
-  
   todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask();
   });
@@ -90,5 +89,19 @@ document.addEventListener('DOMContentLoaded', () => {
   cancelDeleteBtn.addEventListener('click', () => {
     modal.classList.add('hidden');
     taskToDelete = null;
+  });
+
+  // Edit task logic
+  saveEditBtn.addEventListener('click', () => {
+    if (taskToEdit) {
+      taskToEdit.textContent = editInput.value.trim();
+      editModal.classList.add('hidden');
+      taskToEdit = null;
+    }
+  });
+
+  cancelEditBtn.addEventListener('click', () => {
+    editModal.classList.add('hidden');
+    taskToEdit = null;
   });
 });

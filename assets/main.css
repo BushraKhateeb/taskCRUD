@@ -209,13 +209,32 @@ background: #ffffff;
 
 #confirmDelete {
   background-color: #ccc;
-  color: #000;
+  color: #333;
 }  
 
 #taskList li.completed span {
-  text-decoration:2px line-through red; 
-  color:red;
+  text-decoration:2px line-through #e53935; 
+  color:#e53935;
+}  
+#editInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
+
+#saveEdit {
+  background-color: #0097a7; 
+  color: white;
+}
+
+#cancelEdit {
+  background-color: #e53935; 
+  color: white;
+} 
+
 
 
 
