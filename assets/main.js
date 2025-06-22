@@ -1,0 +1,38 @@
+document.addEventListener('DOMContentLoaded',()=> {
+const todoInput = document.getElementById('todoInput'); 
+const addBtn = document.getElementById('addBtn'); 
+const taskList = document.getElementById('taskList'); 
+const noTasks = document.getElementById('noTasks');
+
+
+const toggleEmptyState=()=>{
+  noTasks.style.display = taskList.children.
+  length === 0 ? 'block' : 'none';
+}
+
+
+const addTask = (event) => { 
+    event.preventDefault();
+
+    const taskText= todoInput.value.trim() ;
+    if(!taskText){
+        return;
+    } 
+     const li= document.createElement('li');
+     li.textContent = taskText ; 
+     taskList.appendChild(li); 
+     todoInput.value = ''; 
+     toggleEmptyState();
+}; 
+
+addBtn.addEventListener('click' , addTask);
+todoInput.addEventListener('keypress', (e)=> {
+    if(e.key === 'Enter'){
+      addTask(e) ;
+    }
+})
+
+});
+
+
+
