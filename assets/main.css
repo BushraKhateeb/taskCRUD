@@ -208,8 +208,8 @@ background: #ffffff;
 }
 
 #confirmDelete {
-  background-color: red;
-  color: red;
+  background-color: #ccc;
+  color: #000;
 }  
 
 #taskList li.completed span {
