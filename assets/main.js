@@ -13,11 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleEmptyState = () => {
     noTasks.style.display = taskList.children.length === 0 ? 'block' : 'none';
   };
+   
 
-  const addTask = (event) => {
-    event.preventDefault();
-
-    const taskText = todoInput.value.trim();
+  const addTask = (text , completed = false) => {
+    const taskText = text|| todoInput.value.trim();
     if (!taskText) return;
 
     const li = document.createElement('li');
@@ -71,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleEmptyState();
   };
 
-  addBtn.addEventListener('click', addTask);
+  addBtn.addEventListener('click',()=>
+     addTask());
   todoInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask(e);
   });
