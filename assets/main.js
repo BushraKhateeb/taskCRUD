@@ -4,21 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const taskList = document.getElementById('taskList');
   const noTasks = document.getElementById('noTasks');
 
-  const modal = document.getElementById('confirmModal');
-  const confirmDeleteBtn = document.getElementById('confirmDelete');
-  const cancelDeleteBtn = document.getElementById('cancelDelete');
+   const modal = document.getElementById('confirmModal');
+    const confirmDeleteBtn = document.getElementById('confirmDelete');
+     const cancelDeleteBtn = document.getElementById('cancelDelete');
 
-  const editModal = document.getElementById('editModal');
-  const editInput = document.getElementById('editInput');
-  const saveEditBtn = document.getElementById('saveEdit');
-  const cancelEditBtn = document.getElementById('cancelEdit');
+   const editModal = document.getElementById('editModal');
+   const editInput = document.getElementById('editInput');
+   const saveEditBtn = document.getElementById('saveEdit');
+     const cancelEditBtn = document.getElementById('cancelEdit');
 
-  let taskToDelete = null;
-  let taskToEdit = null;
+      let taskToDelete = null;
+    let taskToEdit = null;
 
   const toggleEmptyState = () => {
     noTasks.style.display = taskList.children.length === 0 ? 'block' : 'none';
-  };
+   };
 
   const addTask = (text = '', completed = false) => {
     const taskText = text || todoInput.value.trim();
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         taskToEdit = taskSpan;
         editInput.value = taskSpan.textContent;
         editModal.classList.remove('hidden');
-      }
+         }
     });
 
     taskList.appendChild(li);
