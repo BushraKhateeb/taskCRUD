@@ -116,13 +116,10 @@ h2 {
   background-color: #ec5c57;
 } 
 
-#taskList{
-  width: 100%;
-}  
+  
 
 #taskList li {
   display: flex;
-  flex-direction: row-reverse; 
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
