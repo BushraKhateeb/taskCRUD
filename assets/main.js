@@ -24,20 +24,39 @@ document.addEventListener('DOMContentLoaded', () => {
     li.innerHTML = `
       <span>${taskText}</span>
       <div class="taskBtn">
-        <input type="checkbox" class="checkbox">
+        <input type="checkbox" class="checkbox" $ {completed ? 'checked' : ''} >
         <button class="editBtn"><i class="fa-solid fa-pen"></i></button>
         <button class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
       </div>
     `; 
      const checkbox = li.querySelector('.checkbox');
      const editBtn = li.querySelector('.editBtn');
-      
+          
+          if (completed){
+            li.classList.add('completed');
+            editBtn.disabled = true; 
+            editBtn.style.opacity='0.5';
+            editBtn.style.pointerEvents='none';
+          } 
+
+
+     checkbox.addEventListener('change',()=>{
+          const isChecked= checkbox.checked;
+          li.classList.toggle('completed',isChecked);
+          editBtn.disabled = isChecked ;
+          editBtn.style.opacity= isChecked ? 
+          '0.5' : '1' ;
+          editBtn.style.pointerEvents=isChecked ? 
+          'none' : 'auto';
+     });  
+
      editBtn.addEventListener('click',()=> {
         
         if(!checkbox.checked){
            todoInput.value = li.querySelector
            ('span').textContent; 
            li.remove();
+           toggleEmptyState();
         }
      });
 
