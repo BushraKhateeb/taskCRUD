@@ -116,19 +116,21 @@ h2 {
   background-color: #ec5c57;
 } 
 
-  
+  .noTasks{
+    width: 800px;  
+    padding: 30px;
+  }
 
 #taskList li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  border: 2px solid #ccc;
   font-size: 16px; 
-  cursor: pointer;
+  width: 100%;  
+  padding: 10px;
+  
 }  
 
-#taskList li:hover{
-  box-shadow: 0 0 0 ;
-}
+
 
