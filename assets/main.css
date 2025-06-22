@@ -124,5 +124,11 @@ h2 {
   align-items: center;
   padding: 8px 0;
   border-bottom: 1px solid #eee;
-  font-size: 16px;
+  font-size: 16px; 
+  cursor: pointer;
+}  
+
+#taskList li:hover{
+  box-shadow: 0 0 0 ;
 }
+
