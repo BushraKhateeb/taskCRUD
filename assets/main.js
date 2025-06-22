@@ -31,7 +31,9 @@ const addTask = (event) => {
       `;
 
       li.querySelector('.deleteBtn').addEventListener('click', ()=>{
-        li.remove();
+        li.remove();  
+        toggleEmptyState();
+
       });
 
      taskList.appendChild(li); 
