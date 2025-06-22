@@ -18,8 +18,13 @@ const addTask = (event) => {
     if(!taskText){
         return;
     } 
-     const li= document.createElement('li');
-     li.textContent = taskText ; 
+     const li= document.createElement('li'); 
+      li.innerHTML = `
+      <input type= "checkbox" class="checkbox"> 
+      <span>${taskText} </span>
+      `;
+
+     
      taskList.appendChild(li); 
      todoInput.value = ''; 
      toggleEmptyState();
