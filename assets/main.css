@@ -216,6 +216,7 @@ background: #ffffff;
   text-decoration:2px line-through #e53935; 
   color:#e53935;
 }  
+
 #editInput {
   width: 100%;
   padding: 10px;
@@ -234,6 +235,8 @@ background: #ffffff;
   background-color: #e53935; 
   color: white;
 } 
+
+
 b{
   font-size: 24px;
 }
