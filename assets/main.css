@@ -133,11 +133,13 @@ h2 {
   font-size: 1.2rem;
 }    
 
-.taskBtn{
+.taskBtn {
   display: flex;
-  gap: 10px;
+  flex-direction: row;
   align-items: center;
-} 
+  gap: 10px;
+}
+
 
 .taskBtn button{
 background: #ffffff;
