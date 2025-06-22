@@ -28,9 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
         <button class="editBtn"><i class="fa-solid fa-pen"></i></button>
         <button class="deleteBtn"><i class="fa-solid fa-trash"></i></button>
       </div>
-    `;
+    `; 
+     const checkbox = li.querySelector('.checkbox');
+     const editBtn = li.querySelector('.editBtn');
+      
+     editBtn.addEventListener('click',()=> {
+        
+        if(!checkbox.checked){
+           todoInput.value = li.querySelector
+           ('span').textContent; 
+           li.remove();
+        }
+     });
 
-    // عند الضغط على زر الحذف
+    // هشان لما اكبس على سلة المحذوفات
     li.querySelector('.deleteBtn').addEventListener('click', () => {
       taskToDelete = li;
       modal.classList.remove('hidden');
