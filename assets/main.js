@@ -23,7 +23,7 @@ const addTask = (event) => {
       <span>${taskText} </span> 
       <input type= "checkbox" class="checkbox"> 
       <div class="taskBtn"> 
-      <button class="editBtn"><i class="fa-solid fa-pencil"></i></button> 
+      <button class="editBtn"><i class="fa-solid fa-pen"></i></button> 
       <button class="deleteBtn"><i class="fa-solid fa-trash"></i></button>  
       </div> 
       `;

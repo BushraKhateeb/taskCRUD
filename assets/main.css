@@ -127,15 +127,38 @@ h2 {
   align-items: center;
   border: 2px solid #ccc;
   font-size: 16px; 
-  width: 100%;  
-  padding: 10px;
-  
-}   
+  width: 800px;  
+  padding: 10px; 
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}    
+
 .taskBtn{
  display: flex;
   margin-right: auto; 
   gap: 10px;
+} 
+
+.taskBtn button{
+background: #ffffff;
+  border: none; 
+  width: 30px; 
+  height: 30px; 
+  color: #fff; 
+  cursor: pointer; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+}  
+.editBtn{
+  color: yellow;
+} 
+
+.deleteBtn{
+  color:#ec5c57 ;
 }
+
+
 
 
 
