@@ -117,5 +117,12 @@ h2 {
 } 
 
 #taskList{
+  width: 100%;
+}  
+
+#taskList li {
+  display: flex; 
+  align-items: center; 
+  
   
 }
