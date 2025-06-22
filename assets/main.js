@@ -20,8 +20,8 @@ const addTask = (event) => {
     } 
      const li= document.createElement('li'); 
       li.innerHTML = `
+      <span>${taskText} </span> 
       <input type= "checkbox" class="checkbox"> 
-      <span>${taskText} </span>
       `;
 
      
