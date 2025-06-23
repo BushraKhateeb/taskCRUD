@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const deleteDoneBtn = document.querySelector('.deleteDone');
   const deleteAllBtn = document.querySelector('.deleteAll');
   const showAllBtn = document.querySelector('.filterBtn button:nth-child(1)');
-const showCompletedBtn = document.querySelector('.filterBtn button:nth-child(2)');
-const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3)');
+  const showCompletedBtn = document.querySelector('.filterBtn button:nth-child(2)');
+  const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3)');
 
   let taskToDelete = null;
   let taskToEdit = null;
@@ -75,7 +75,7 @@ const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3
       editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
 
       deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
-      saveTasksToLocalStorage(); 
+      saveTasksToLocalStorage();
     });
 
     deleteBtn.addEventListener('click', () => {
@@ -98,7 +98,7 @@ const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3
     deleteAllBtn.disabled = false;
     deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
 
-    saveTasksToLocalStorage(); 
+    saveTasksToLocalStorage();
   };
 
   addBtn.addEventListener('click', () => addTask());
@@ -110,7 +110,7 @@ const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3
     if (taskToDelete) {
       taskToDelete.remove();
       toggleEmptyState();
-      saveTasksToLocalStorage(); 
+      saveTasksToLocalStorage();
     }
     modal.classList.add('hidden');
     taskToDelete = null;
@@ -129,7 +129,7 @@ const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3
       taskToEdit.textContent = editInput.value;
       editModal.classList.add('hidden');
       taskToEdit = null;
-      saveTasksToLocalStorage(); 
+      saveTasksToLocalStorage();
     }
   });
 
@@ -146,7 +146,7 @@ const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3
     toggleEmptyState();
     deleteDoneBtn.disabled = true;
     deleteAllBtn.disabled = taskList.children.length === 0;
-    saveTasksToLocalStorage(); 
+    saveTasksToLocalStorage();
   });
 
   deleteAllBtn.addEventListener('click', () => {
