@@ -16,12 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
   let taskToDelete = null;
   let taskToEdit = null;
 
+  const saveTasksToLocalStorage = () => {
+    const tasks = Array.from(taskList.children).map(li => {
+      return {
+        text: li.querySelector('span').textContent,
+        completed: li.classList.contains('completed')
+      };
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
+
+  const loadTasksFromLocalStorage = () => {
+    const stored = localStorage.getItem('tasks');
+    if (stored) {
+      const tasks = JSON.parse(stored);
+      tasks.forEach(task => addTask(task.text, task.completed));
+    }
+  };
+
   const toggleEmptyState = () => {
     noTasks.style.display = taskList.children.length === 0 ? 'block' : 'none';
   };
 
   const addTask = (text = '', completed = false) => {
-    const taskText = text || todoInput.value.trim();
+    const taskText = text || todoInput.value;
     if (!taskText || Array.from(taskList.children).some(li => li.querySelector('span').textContent === taskText)) return;
 
     const li = document.createElement('li');
@@ -54,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       editBtn.style.pointerEvents = isChecked ? 'none' : 'auto';
 
       deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
+      saveTasksToLocalStorage(); 
     });
 
     deleteBtn.addEventListener('click', () => {
@@ -75,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deleteAllBtn.disabled = false;
     deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
+
+    saveTasksToLocalStorage(); 
   };
 
   addBtn.addEventListener('click', () => addTask());
@@ -86,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (taskToDelete) {
       taskToDelete.remove();
       toggleEmptyState();
+      saveTasksToLocalStorage(); 
     }
     modal.classList.add('hidden');
     taskToDelete = null;
@@ -101,9 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   saveEditBtn.addEventListener('click', () => {
     if (taskToEdit) {
-      taskToEdit.textContent = editInput.value.trim();
+      taskToEdit.textContent = editInput.value;
       editModal.classList.add('hidden');
       taskToEdit = null;
+      saveTasksToLocalStorage(); 
     }
   });
 
@@ -111,4 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
     editModal.classList.add('hidden');
     taskToEdit = null;
   });
+
+  deleteDoneBtn.addEventListener('click', () => {
+    const tasks = Array.from(taskList.children);
+    tasks.forEach(li => {
+      if (li.classList.contains('completed')) li.remove();
+    });
+    toggleEmptyState();
+    deleteDoneBtn.disabled = true;
+    deleteAllBtn.disabled = taskList.children.length === 0;
+    saveTasksToLocalStorage(); 
+  });
+
+  deleteAllBtn.addEventListener('click', () => {
+    taskList.innerHTML = '';
+    toggleEmptyState();
+    deleteAllBtn.disabled = true;
+    deleteDoneBtn.disabled = true;
+    saveTasksToLocalStorage();
+  });
+
+  loadTasksFromLocalStorage();
 });
