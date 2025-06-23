@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancelEditBtn = document.getElementById('cancelEdit');
   const deleteDoneBtn = document.querySelector('.deleteDone');
   const deleteAllBtn = document.querySelector('.deleteAll');
+  const showAllBtn = document.querySelector('.filterBtn button:nth-child(1)');
+const showCompletedBtn = document.querySelector('.filterBtn button:nth-child(2)');
+const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3)');
 
   let taskToDelete = null;
   let taskToEdit = null;
