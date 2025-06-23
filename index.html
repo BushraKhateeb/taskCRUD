@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Todo</title>
-  <link href="./assets/main.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/main.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -17,15 +17,15 @@
 
     <h2>Todo List</h2>
     <div class="filterBtn">
-      <button>All</button>
-      <button>Done</button>
-      <button>Todo</button>
+      <button id="showAll" class="active">All</button>
+      <button id="showCompleted">Done</button>
+      <button id="showUncompleted">Todo</button>
     </div>
 
     <div class="noTasks" id="noTasks">
-      <p>No Tasks</p></div>
-      <ul id="taskList"></ul>
-   
+      <p>No Tasks</p>
+    </div>
+    <ul id="taskList"></ul>
 
     <div class="deleteBtn">
       <button class="deleteDone" disabled>Delete Done Tasks</button>
@@ -59,3 +59,4 @@
   <script src="./assets/main.js"></script>
 </body>
 </html>
+

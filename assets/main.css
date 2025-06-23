@@ -73,6 +73,11 @@ h2 {
   background-color: #0097a7;
 }
 
+.filterBtn button.active {
+  background-color: #007d8a;
+  border: 2px solid #005e66;
+}
+
 .noTasks {
   text-align: center;
   font-size: 16px;
@@ -112,6 +117,10 @@ h2 {
   cursor: not-allowed;
 }
 
+ul#taskList {
+  padding: 5px;
+}
+
 #taskList li {
   display: flex;
   justify-content: space-between;
@@ -122,9 +131,6 @@ h2 {
   margin-bottom: 10px;
   transition: all 0.2s ease-in-out;
   border-radius: 6px;
-}
-ul#taskList{
-  padding: 5px;
 }
 
 #taskList li span {
