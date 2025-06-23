@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const cancelEditBtn = document.getElementById('cancelEdit');
   const deleteDoneBtn = document.querySelector('.deleteDone');
   const deleteAllBtn = document.querySelector('.deleteAll');
-  const showAllBtn = document.querySelector('.filterBtn button:nth-child(1)');
-  const showCompletedBtn = document.querySelector('.filterBtn button:nth-child(2)');
-  const showUncompletedBtn = document.querySelector('.filterBtn button:nth-child(3)');
+  const showAllBtn = document.getElementById('showAll');
+  const showCompletedBtn = document.getElementById('showCompleted');
+  const showUncompletedBtn = document.getElementById('showUncompleted');
 
   let taskToDelete = null;
   let taskToEdit = null;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const addTask = (text = '', completed = false) => {
-    const taskText = text || todoInput.value;
+    const taskText = text || todoInput.value.trim();
     if (!taskText || Array.from(taskList.children).some(li => li.querySelector('span').textContent === taskText)) return;
 
     const li = document.createElement('li');
@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deleteAllBtn.disabled = false;
     deleteDoneBtn.disabled = Array.from(taskList.children).every(li => !li.classList.contains('completed'));
-
     saveTasksToLocalStorage();
   };
 
@@ -126,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   saveEditBtn.addEventListener('click', () => {
     if (taskToEdit) {
-      taskToEdit.textContent = editInput.value;
+      taskToEdit.textContent = editInput.value.trim();
       editModal.classList.add('hidden');
       taskToEdit = null;
       saveTasksToLocalStorage();
@@ -156,6 +155,43 @@ document.addEventListener('DOMContentLoaded', () => {
     deleteDoneBtn.disabled = true;
     saveTasksToLocalStorage();
   });
+  const filterTasks = (filter) => {
+    const tasks = Array.from(taskList.children);
+    tasks.forEach(li => {
+      const isCompleted = li.classList.contains('completed');
+      if (filter === 'all') {
+        li.style.display = 'flex';
+      } else if (filter === 'completed') {
+        li.style.display = isCompleted ? 'flex' : 'none';
+      } else if (filter === 'uncompleted') {
+        li.style.display = !isCompleted ? 'flex' : 'none';
+      }
+    });
+  };
+
+  const setActiveButton = (activeBtn) => {
+    [showAllBtn, showCompletedBtn, showUncompletedBtn].forEach(btn => {
+      btn.classList.remove('active');
+    });
+    activeBtn.classList.add('active');
+  };
+
+  showAllBtn.addEventListener('click', () => {
+    filterTasks('all');
+    setActiveButton(showAllBtn);
+  });
+
+  showCompletedBtn.addEventListener('click', () => {
+    filterTasks('completed');
+    setActiveButton(showCompletedBtn);
+  });
+
+  showUncompletedBtn.addEventListener('click', () => {
+    filterTasks('uncompleted');
+    setActiveButton(showUncompletedBtn);
+  });
 
   loadTasksFromLocalStorage();
+  filterTasks('all');
+  setActiveButton(showAllBtn);
 });
